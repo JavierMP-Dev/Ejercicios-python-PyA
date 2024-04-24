@@ -11,3 +11,8 @@ unidades = num % 10
 print ("Centenas ", centenas)
 print ("decenas  ", decenas )
 print ("unidades", unidades)
+
+
+#Hola este es un comentario de prubea de seguimiento pues 
+#despues de hacer un git push -u origin main
+#simplemente se puede hacer un git push
