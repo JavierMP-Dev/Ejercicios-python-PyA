@@ -7,3 +7,5 @@ Ejemplo de número perfecto: numero = 6. Divisores propios 1, 2, 3. Suma de divi
 
 for  num in range(1, 1000):
     print (num)
+
+    
