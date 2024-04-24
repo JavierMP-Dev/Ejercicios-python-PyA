@@ -5,7 +5,28 @@ Definición: Los divisores propios de un número son aquellos que dividen a un n
 Ejemplo de número perfecto: numero = 6. Divisores propios 1, 2, 3. Suma de divisores propios = 6. 6 = 6.
 '''
 
-for  num in range(1, 1000):
-    print (num)
+
+def calcular_divisores(num):
+    divisores = []
+    for i in range(1, num):
+        if num % i == 0:
+            divisores.append(i)
+    return divisores
+
+def es_numero_perfecto(num):
+    suma_divisores = sum(calcular_divisores(num))
+    return suma_divisores == num
+
+def encontrar_numeros_perfectos(inicio, fin):
+    numeros_perfectos = []
+    for num in range(inicio, fin+1):
+        if es_numero_perfecto(num):
+            numeros_perfectos.append(num)
+    return numeros_perfectos
+
+inicio = 1
+fin = 1000
+numeros_perfectos = encontrar_numeros_perfectos(inicio, fin)
+print("Números perfectos entre", inicio, "y", fin, ":", numeros_perfectos)
 
     
