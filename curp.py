@@ -9,6 +9,7 @@ def leer_nombres():
 
 #funcion solicitar apellidos 
 #Leer los apellidos no representa ningún problema, solamente los convertimos a mayúsculas.
+def leer_apellidos():
     """Lee los apellidos"""
     print('¿Cuáles son tus apellidos? (Mayúsculas y sin acentos)')
     primer_apellido = input('Primer apellido: ').upper()
@@ -121,6 +122,23 @@ def leer_datos():
     return nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
         mes_nacimiento, dia_nacimiento, sexo, entidad
 '''
-Recordemos, como se vio hace tiempo, qué se puede manejar el valor del retorno de una función como una tupla, es decir como una colección de valores. También vimos que las funciones pueden recibir precisamente una tupla, de esta forma realizamos el llamado para el cálculo de la CURP:'''
+Recordemos, como se vio hace tiempo, qué se puede manejar el valor del retorno de una función 
+como una tupla, es decir como una colección de valores. También vimos que las 
+funciones pueden recibir precisamente una tupla, de esta forma realizamos el llamado para el cálculo de la CURP:
+'''
 
-curp(*leer_datos())
+print(curp)
+
+def curp(nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
+    mes_nacimiento, dia_nacimiento, sexo, entidad):
+    """Calcula la CURP"""
+    curp = primer_apellido[0:2].upper() + \
+        segundo_apellido[0].upper() + \
+        nombres[0].upper() + \
+        anio_nacimiento[2:4] + \
+        mes_nacimiento + \
+        dia_nacimiento + \
+        sexo + \
+        entidad
+    return curp
+
