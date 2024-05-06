@@ -4,8 +4,24 @@
 def leer_nombres():
     """Lee los nombres"""
     print('¿Cuáles son tus nombres? (Mayúsculas y sin acentos)')
-    nombres = input('>>>').upper()
-    return nombres
+    nombres = input('>>>').strip().split()
+    
+    # Verificar si se proporcionaron nombres y tomar el primero
+    if nombres:
+        primer_nombre = nombres[0].upper()
+        
+        # Verificar si el primer nombre es "MARIA" o "JOSE"
+        if primer_nombre in ["MARIA", "JOSE"]:
+            # Tomar el segundo nombre si existiera
+            if len(nombres) > 1:
+                return nombres[1].upper()
+            else:
+                return ""
+        else:
+            return primer_nombre
+    else:
+        return ""
+
 
 #funcion solicitar apellidos 
 #Leer los apellidos no representa ningún problema, solamente los convertimos a mayúsculas.
@@ -104,7 +120,6 @@ def leer_entidad():
             for clave, valor in entidades.items():
                 print(clave, ':', valor)
             print('')
-
         entidad = input('>>>').upper()
     return entidad
 
@@ -127,7 +142,7 @@ como una tupla, es decir como una colección de valores. También vimos que las
 funciones pueden recibir precisamente una tupla, de esta forma realizamos el llamado para el cálculo de la CURP:
 '''
 
-print(curp)
+
 
 def curp(nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
     mes_nacimiento, dia_nacimiento, sexo, entidad):
@@ -142,3 +157,11 @@ def curp(nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
         entidad
     return curp
 
+
+
+
+curp_generada =curp(*leer_datos())
+
+
+# Imprimiendo la CURP calculada en pantalla
+print("La CURP generada es:", curp_generada)
