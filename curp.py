@@ -10,7 +10,7 @@ def leer_nombres():
     if nombres:
         primer_nombre = nombres[0].upper()
         
-        # Verificar si el primer nombre es "MARIA" o "JOSE"
+        # Verificar si el primer nombre es "MARIA" o "JOSE" para evitarlo en caso de que sea el primer nombre
         if primer_nombre in ["MARIA", "JOSE"]:
             # Tomar el segundo nombre si existiera
             if len(nombres) > 1:
@@ -39,20 +39,72 @@ def leer_anio_nacimiento():
     """Lee el año de nacimiento"""
     print('¿En qué año naciste? (4 dígitos)')
     anio_nacimiento = input('>>>')
-    while not anio_nacimiento.isnumeric() or len(anio_nacimiento) != 4:
+    
+    # Verificar que el año esté en el rango correcto
+    while not anio_nacimiento.isnumeric() or len(anio_nacimiento) != 4 or \
+          int(anio_nacimiento) < 1900 or int(anio_nacimiento) > 2024:
+        
+        print('Año incorrecto. Debe ser mayor que 1900 y menor que 2024.')
         anio_nacimiento = input('>>>')
+    
     return anio_nacimiento
+
+    
+    # Verificar que el año esté en el rango correcto
+    while not anio_nacimiento.isnumeric() or len(anio_nacimiento) != 4 or \
+          int(anio_nacimiento) < 1900 or int(anio_nacimiento) > 2024:
+        
+        print('Año incorrecto. Debe ser mayor que 1900 y menor que 2024.')
+        anio_nacimiento = input('>>>')
+    
+    return anio_nacimiento
+
+    
+
 
 #mes de nacimiento
 #En el caso de los meses, tal vez no quisiéramos pedirle el mes de nacimiento como 
 #dos caracteres si no dar al usuario y la opción de elegir su mes de nacimiento a través de un menú.
 def leer_mes_nacimiento():
     """Lee el mes de nacimiento"""
+    print('Enero   -----> 01')
+    print('Febrero -----> 02')
+    print('Marzo   -----> 03')
+    print('Abril   -----> 04')
+    print('Mayo    -----> 05')
+    print('Junio   -----> 06')
+    print('Julio   -----> 07')
+    print('Agosto  -----> 08')
+    print('Septiembre --> 09')
+    print('Octubre -----> 10')
+    print('Noviembre----> 11')
+    print('Diciembre----> 12')
     print('¿En qué mes naciste? (2 dígitos)')
+
     mes_nacimiento = input('>>>')
-    while not mes_nacimiento.isnumeric() or len(mes_nacimiento) != 2:
+    
+    # Verificar que el mes esté en el rango correcto
+    while not mes_nacimiento.isnumeric() or len(mes_nacimiento) != 2 or \
+          int(mes_nacimiento) < 1 or int(mes_nacimiento) > 12:
+        
+        print('Mes incorrecto. Debe ser un número del 1 al 12.')
         mes_nacimiento = input('>>>')
+    
+    # Verificar que el mes sea válido en relación al día de nacimiento
+    dia_nacimiento = leer_dia_nacimiento()
+    while (mes_nacimiento == '02' and dia_nacimiento == '30') or \
+          (mes_nacimiento == '02' and dia_nacimiento == '31') or \
+          (mes_nacimiento == '04' and dia_nacimiento == '31') or \
+          (mes_nacimiento == '06' and dia_nacimiento == '31') or \
+          (mes_nacimiento == '09' and dia_nacimiento == '31') or \
+          (mes_nacimiento == '11' and dia_nacimiento == '31'):
+        
+        print('Fecha incorrecta. El mes no tiene ese día.')
+        mes_nacimiento = input('>>>')
+    
     return mes_nacimiento
+
+
 
 #dia de nacimiento
 #En el caso del día, debemos validar que sea un número entero positivo, mayor que cero y menor que 32 en unos casos, menor que 31 en otros
@@ -65,13 +117,14 @@ def leer_dia_nacimiento():
         dia_nacimiento = input('>>>')
     return dia_nacimiento
 
+
 #Leer exceso no representa ningún problema, aunque es posible no proporcionar p
 #un valor por cuestiones de diversidad. En tal caso, hay que regresar una "X".
 def leer_sexo():
     """Lee el sexo"""
     print('¿Cuál es tu sexo? (H/M)')
     sexo = input('>>>').upper()
-    while sexo not in ['H', 'M']:
+    while sexo not in ['H', 'M', 'X']:
         sexo = input('>>>').upper()
     return sexo
 
