@@ -90,19 +90,8 @@ def leer_mes_nacimiento():
         print('Mes incorrecto. Debe ser un número del 1 al 12.')
         mes_nacimiento = input('>>>')
     
-    # Verificar que el mes sea válido en relación al día de nacimiento
-    dia_nacimiento = leer_dia_nacimiento()
-    while (mes_nacimiento == '02' and dia_nacimiento == '30') or \
-          (mes_nacimiento == '02' and dia_nacimiento == '31') or \
-          (mes_nacimiento == '04' and dia_nacimiento == '31') or \
-          (mes_nacimiento == '06' and dia_nacimiento == '31') or \
-          (mes_nacimiento == '09' and dia_nacimiento == '31') or \
-          (mes_nacimiento == '11' and dia_nacimiento == '31'):
-        
-        print('Fecha incorrecta. El mes no tiene ese día.')
-        mes_nacimiento = input('>>>')
-    
     return mes_nacimiento
+
 
 
 
@@ -111,11 +100,12 @@ def leer_mes_nacimiento():
 #casos y menor que 30 o 29 en el caso del mes de febrero.
 def leer_dia_nacimiento():
     """Lee el día de nacimiento"""
-    print('¿En qué día naciste? (2 dígitos)')
+    print('¿En qué día naciste?  1 (2 dígitos)')
     dia_nacimiento = input('>>>')
     while not dia_nacimiento.isnumeric() or len(dia_nacimiento) != 2:
-        dia_nacimiento = input('>>>')
+        dia_nacimiento = input('>>>2')
     return dia_nacimiento
+
 
 
 #Leer exceso no representa ningún problema, aunque es posible no proporcionar p
@@ -128,8 +118,6 @@ def leer_sexo():
         sexo = input('>>>').upper()
     return sexo
 
-
-#entidad
 entidades = {'AG':'Aguascalientes',
              'BC':'Baja California',
              'BS':'Baja California Sur',
@@ -165,15 +153,15 @@ entidades = {'AG':'Aguascalientes',
 
 def leer_entidad():
     """Lee la entidad federativa de nacimiento"""
-    print('¿En que entidad federativa naciste?\n(2 letras mayúsculas, \
-    por ejemplo: DF; ? para ver la lista de entidades)')
-    entidad = input('>>>').upper()
+    entidad = ''
     while entidad not in entidades:
+        print('¿En qué entidad federativa naciste?\n(2 letras mayúsculas, \
+        por ejemplo: DF; ? para ver la lista de entidades)')
+        entidad = input('>>>').upper()
         if entidad == '?':
             for clave, valor in entidades.items():
                 print(clave, ':', valor)
             print('')
-        entidad = input('>>>').upper()
     return entidad
 
 
