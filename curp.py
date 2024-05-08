@@ -177,14 +177,14 @@ def leer_datos():
     entidad = leer_entidad()
     return nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
         mes_nacimiento, dia_nacimiento, sexo, entidad
+
 '''
 Recordemos, como se vio hace tiempo, qué se puede manejar el valor del retorno de una función 
 como una tupla, es decir como una colección de valores. También vimos que las 
 funciones pueden recibir precisamente una tupla, de esta forma realizamos el llamado para el cálculo de la CURP:
 '''
 
-
-
+#se devuelve la funcion en forma de tupla
 def curp(nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
     mes_nacimiento, dia_nacimiento, sexo, entidad):
     """Calcula la CURP"""
@@ -199,7 +199,8 @@ def curp(nombres, primer_apellido, segundo_apellido, anio_nacimiento, \
     return curp
 
 
-
+#dato a recordar, en python se debe seguir un orden cronologico
+#no se puede llamar una funcion si no fue declarada antes de la linea donde se le llame
 
 curp_generada =curp(*leer_datos())
 
