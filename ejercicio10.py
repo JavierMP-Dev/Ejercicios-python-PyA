@@ -1,7 +1,6 @@
 
 #hacer division en el rango de [-10, 10]
 
-
 for divisor in range(-10, 10): #recorriendo mediante ciclo for
     try: #haciendo operacion en cada iteracion
         resultado = 20 / divisor 
